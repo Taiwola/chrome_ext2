@@ -1,10 +1,10 @@
 const fs = require('fs');
-const Deepgram = require('@deepgram/sdk');
+const { Deepgram } = require('@deepgram/sdk');
 const path = require('path');
 const { Readable } = require('stream');
 
 const deepgramApiKey = process.env.deepgram;
-const deepgram = Deepgram(deepgramApiKey);
+const deepgram = new Deepgram(deepgramApiKey);
 
 
 const upload = async (req, res) => {
