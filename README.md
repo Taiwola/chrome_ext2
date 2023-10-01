@@ -45,7 +45,7 @@ Example Request:
 
 bash
 Copy code
-curl -X POST -F "video=@/path/to/video.mp4" https://chrome-ext-api-ogx8.onrender.com/api/upload/abc123def456
+curl -X POST -F "video=@/path/to/video.mp4" https://chrome-ext-api-ogx8.onrender.com/api/upload/123456
 Example Response:
 
 json
@@ -67,7 +67,7 @@ Example Request:
 
 bash
 Copy code
-curl -X GET https://chrome-ext-api-ogx8.onrender.com/api/video/abc123def456 --output downloaded_video.mp4
+curl -X GET https://chrome-ext-api-ogx8.onrender.com/api/video/12345 --output downloaded_video.mp4
 Example Response:
 
 The video file will be downloaded to your local directory as downloaded_video.mp4.
