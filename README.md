@@ -85,7 +85,7 @@ Example Request:
 
 bash
 Copy code
-curl -X GET https://chrome-ext-api-ogx8.onrender.com/api/transcribe/abc123def456
+curl -X GET https://chrome-ext-api-ogx8.onrender.com/api/transcribe/12345
 Example Response:
 
 json
