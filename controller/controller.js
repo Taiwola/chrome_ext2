@@ -4,7 +4,7 @@ const path = require('path');
 const { Readable } = require('stream');
 
 const deepgramApiKey = process.env.deepgram;
-const deepgram = new Deepgram(deepgramApiKey);
+const deepgram = Deepgram(deepgramApiKey);
 
 
 const upload = async (req, res) => {
