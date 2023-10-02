@@ -2,6 +2,7 @@ const fs = require('fs');
 const { Deepgram } = require('@deepgram/sdk');
 const path = require('path');
 const { Readable } = require('stream');
+const { error } = require('console');
 
 const deepgramApiKey = process.env.deepgram;
 const deepgram = new Deepgram(deepgramApiKey);
@@ -155,10 +156,11 @@ const transcribe = async (req, res) => {
 }
 
 const getAllVideo = async () => {
-    const dir = '/public';
-    const files = fs.readdirSync(dir);
     const url = 'https://chrome-ext-api-ogx8.onrender.com/';
+    const dir = '/public';
+    const files = fs.readdirSync(url + dir);
     if (!files) {
+        console.log('Error: ', error)
         return res.status(400).json({
             message: false,
             error: error.message,
