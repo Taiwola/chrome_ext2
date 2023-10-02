@@ -2,7 +2,6 @@ const fs = require('fs');
 const { Deepgram } = require('@deepgram/sdk');
 const path = require('path');
 const { Readable } = require('stream');
-const axios = require('axios');
 
 const deepgramApiKey = process.env.deepgram;
 const deepgram = new Deepgram(deepgramApiKey);
@@ -162,7 +161,7 @@ const getAllVideo = async (req, res) => {
         const url = baseUrl + folderPath;
 
         // Make a GET request to the URL
-        const response = await axios.get(url);
+        const response = await fetch.get(url);
 
         if (!response) {
             return res.status(404).json({
