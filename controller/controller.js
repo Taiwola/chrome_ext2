@@ -2,7 +2,7 @@ const fs = require('fs');
 const { Deepgram } = require('@deepgram/sdk');
 const path = require('path');
 const { Readable } = require('stream');
-const { error } = require('console');
+const axios = require('axios');
 
 const deepgramApiKey = process.env.deepgram;
 const deepgram = new Deepgram(deepgramApiKey);
@@ -156,21 +156,23 @@ const transcribe = async (req, res) => {
 }
 
 const getAllVideo = async () => {
-    const url = 'https://chrome-ext-api-ogx8.onrender.com/';
-    const dir = '/public';
-    const files = fs.readdirSync(url + dir);
-    if (!files) {
-        console.log('Error: ', error)
-        return res.status(400).json({
-            message: false,
-            error: error.message,
+    try {
+        const url = 'https://chrome-ext-api-ogx8.onrender.com/public';
+
+        const response = await axios.get(url);
+        const files = response.data; // Assuming the response is an array of files
+
+        return res.status(200).json({
+            files,
             url
-        })
-    };
-    return res.status(200).json({
-        files,
-        url
-    })
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({
+            message: 'Failed to retrieve files from the URL',
+            error: error.message
+        });
+    }
 }
 
 module.exports = {
