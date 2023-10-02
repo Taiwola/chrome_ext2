@@ -155,19 +155,31 @@ const transcribe = async (req, res) => {
     }
 }
 
-const getAllVideo = async () => {
+const getAllVideo = async (req, res) => {
     try {
-        const url = 'https://chrome-ext-api-ogx8.onrender.com/public';
+        const baseUrl = 'https://chrome-ext-api-ogx8.onrender.com';
+        const folderPath = '/public';
+        const url = baseUrl + folderPath;
 
+        // Make a GET request to the URL
         const response = await axios.get(url);
-        const files = response.data; // Assuming the response is an array of files
+
+        if (!response) {
+            return res.status(404).json({
+                message: 'Failed to retrieve files from the URL',
+                error: error.message
+            });
+        }
+
+        // Assuming the response is an array of files or file names
+        const files = response.data;
 
         return res.status(200).json({
             files,
-            url
+            url: baseUrl // Return the base URL
         });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return res.status(400).json({
             message: 'Failed to retrieve files from the URL',
             error: error.message
