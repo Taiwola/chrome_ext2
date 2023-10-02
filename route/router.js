@@ -12,7 +12,7 @@ router.post("/upload/:id", video, upload);
 router.get("/video/:id", getVideo);
 router.get('/generate', generateId);
 router.get("/transcribe/:id", transcribe);
-router.get("video", getAllVideo)
+router.get("video", getAllVideo);
 
 
 module.exports = router;
