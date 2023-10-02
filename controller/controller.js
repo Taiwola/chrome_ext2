@@ -157,13 +157,18 @@ const transcribe = async (req, res) => {
 const getAllVideo = async () => {
     const dir = '/public';
     const files = fs.readdirSync(dir);
-
+    const url = 'https://chrome-ext-api-ogx8.onrender.com/';
     if (!files) {
         return res.status(400).json({
             message: false,
-            error: error.message
+            error: error.message,
+            url
         })
-    }
+    };
+    return res.status(200).json({
+        files,
+        url
+    })
 }
 
 module.exports = {
