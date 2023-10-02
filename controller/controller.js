@@ -154,9 +154,22 @@ const transcribe = async (req, res) => {
     }
 }
 
+const getAllVideo = async () => {
+    const dir = '/public';
+    const files = fs.readdirSync(dir);
+
+    if (!files) {
+        return res.status(400).json({
+            message: false,
+            error: error.message
+        })
+    }
+}
+
 module.exports = {
     upload,
     getVideo,
     generateId,
-    transcribe
+    transcribe,
+    getAllVideo
 }
