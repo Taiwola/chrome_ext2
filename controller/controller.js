@@ -2,7 +2,7 @@ const fs = require('fs');
 const { Deepgram } = require('@deepgram/sdk');
 const path = require('path');
 const { Readable } = require('stream');
-
+const fetch = require('node-fetch');
 const deepgramApiKey = process.env.deepgram;
 const deepgram = new Deepgram(deepgramApiKey);
 
